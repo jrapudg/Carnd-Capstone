@@ -40,12 +40,8 @@ class TLClassifier(object):
                 [self.boxes, self.scores, self.classes, self.num_detections],
                 feed_dict={self.image_tensor: img_expand})
 
-        boxes = np.squeeze(boxes)
         scores = np.squeeze(scores)
         classes = np.squeeze(classes).astype(np.int32)
-
-        #print('SCORES: ', scores[0])
-        #print('CLASSES: ', classes[0])
 
         if scores[0] > self.min_probability:
             if classes[0] == 1:
